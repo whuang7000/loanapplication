@@ -13,7 +13,7 @@ class LoanPostAPITest(APITestCase):
 			'business_type': 'FOOD_TRUCK',
 			'years': '0',
 		}
-		response = self.client.post('/loans/', data, format='json')
+		response = self.client.post('', data, format='json')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 		self.assertEqual(Loan.objects.count(), 1)
 		self.assertContains(response, "denied")
@@ -25,7 +25,7 @@ class LoanPostAPITest(APITestCase):
 			'business_type': 'FOOD_TRUCK',
 			'years': '5',
 		}
-		response = self.client.post('/loans/', data, format='json')
+		response = self.client.post('', data, format='json')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 		self.assertEqual(Loan.objects.count(), 1)
 		self.assertContains(response, "pre-approved")
@@ -37,7 +37,7 @@ class LoanPostAPITest(APITestCase):
 			'business_type': 'FOOD_TRUCK',
 			'years': '5',
 		}
-		response = self.client.post('/loans/', data, format='json')
+		response = self.client.post('', data, format='json')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
 		self.assertEqual(Loan.objects.count(), 1)
 		self.assertContains(response, "processed")
